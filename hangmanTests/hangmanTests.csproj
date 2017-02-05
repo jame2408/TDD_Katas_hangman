@@ -53,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="HangmanForTest.cs" />
     <Compile Include="HangmanLengthTests.cs" />
     <Compile Include="HangmanUsedTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

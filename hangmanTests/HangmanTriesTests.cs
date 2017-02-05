@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static hangman.Tests.HangmanForTest;
 
 namespace hangman.Tests
 {
@@ -7,9 +8,6 @@ namespace hangman.Tests
     {
         Hangman hangman = new Hangman("word");
         private const int MAX_TRIES = 12;
-        private const char VOWEL = 'a';
-        private const char CONTAINED_CONSONANT = 'w';
-        private const char NOT_CONTAINED_CONSONANT = 'x';
 
         [TestMethod]
         public void tries_when_game_start()
