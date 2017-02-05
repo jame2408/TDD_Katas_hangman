@@ -3,8 +3,10 @@
     public class Hangman
     {
         private const string ALL_VOWELS = "aeiou";
+        private const int MAX_TRIES = 12;
         private string _word;
-        private static string _used = ALL_VOWELS;
+        private string _used = ALL_VOWELS;
+        private int _tries = MAX_TRIES;
 
         public Hangman(string word)
         {
@@ -24,15 +26,38 @@
 
         public void type(char c)
         {
+            decreaseTries(c);
+            appentToUsed(c);
+        }
+
+        private void decreaseTries(char c)
+        {
+            if (IsCharUsed(c) || !IsWordContained(c))
+            {
+                _tries--;
+            }
+        }
+
+        private void appentToUsed(char c)
+        {
             if (!IsCharUsed(c))
             {
                 _used += c;
             }
         }
-
-        private static bool IsCharUsed(char c)
+        private bool IsCharUsed(char c)
         {
             return _used.IndexOf(c) != -1;
+        }
+
+        private bool IsWordContained(char c)
+        {
+            return _word.IndexOf(c) != -1;
+        }
+
+        public int tries()
+        {
+            return _tries;
         }
     }
 }
