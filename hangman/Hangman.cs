@@ -6,6 +6,7 @@ namespace hangman
     {
         private const string ALL_VOWELS = "aeiou";
         private const int MAX_TRIES = 12;
+        private const string PLACEHOLDER = "_";
         private string _word;
         private string _used = ALL_VOWELS;
         private int _tries = MAX_TRIES;
@@ -73,6 +74,30 @@ namespace hangman
         public int tries()
         {
             return _tries;
+        }
+
+        public string discovered()
+        {
+            return replaceConsonantToPlaceHolder();
+        }
+
+        private string replaceConsonantToPlaceHolder()
+        {
+            var discoveredChar = "";
+            for (int i = 0; i < _word.ToCharArray().Length; i++)
+            {
+                discoveredChar += replaceConsonant(_word.ToCharArray()[i]);
+            }
+            return discoveredChar;
+        }
+
+        private string replaceConsonant(char c)
+        {
+            if (IsCharUsed(c))
+            {
+                return c.ToString();
+            }
+            return PLACEHOLDER;
         }
     }
 }

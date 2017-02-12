@@ -57,6 +57,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="HangmanDiscoveredTest.cs" />
     <Compile Include="HangmanForTest.cs" />
     <Compile Include="HangmanGameOverTests.cs" />
     <Compile Include="HangmanLengthTests.cs" />
