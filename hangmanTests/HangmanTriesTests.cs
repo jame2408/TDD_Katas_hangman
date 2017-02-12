@@ -6,8 +6,7 @@ namespace hangman.Tests
     [TestClass]
     public class HangmanTriesTests
     {
-        Hangman hangman = new Hangman("word");
-        private const int MAX_TRIES = 12;
+        HangmanForTest hangman = new HangmanForTest("word");
 
         [TestMethod]
         public void tries_when_game_start()
@@ -19,7 +18,7 @@ namespace hangman.Tests
         [TestMethod]
         public void tries_when_type_a_vowel()
         {
-            hangman.type(VOWEL);
+            hangman.typeWithoutCheckGameOver(VOWEL);
 
             Assert.AreEqual(MAX_TRIES - 1, hangman.tries());
         }
@@ -27,7 +26,7 @@ namespace hangman.Tests
         [TestMethod]
         public void tries_when_type_a_contained_consonant()
         {
-            hangman.type(CONTAINED_CONSONANT);
+            hangman.typeWithoutCheckGameOver(CONTAINED_CONSONANT);
 
             Assert.AreEqual(MAX_TRIES, hangman.tries());
         }
@@ -35,8 +34,8 @@ namespace hangman.Tests
         [TestMethod]
         public void tries_when_type_the_same_contained_consonant_again()
         {
-            hangman.type(CONTAINED_CONSONANT);
-            hangman.type(CONTAINED_CONSONANT);
+            hangman.typeWithoutCheckGameOver(CONTAINED_CONSONANT);
+            hangman.typeWithoutCheckGameOver(CONTAINED_CONSONANT);
 
             Assert.AreEqual(MAX_TRIES - 1, hangman.tries());
         }
@@ -44,7 +43,7 @@ namespace hangman.Tests
         [TestMethod]
         public void tries_when_type_not_contained_consonant()
         {
-            hangman.type(NOT_CONTAINED_CONSONANT);
+            hangman.typeWithoutCheckGameOver(NOT_CONTAINED_CONSONANT);
 
             Assert.AreEqual(MAX_TRIES - 1, hangman.tries());
         }

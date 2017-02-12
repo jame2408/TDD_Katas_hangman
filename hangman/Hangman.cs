@@ -1,4 +1,6 @@
-﻿namespace hangman
+﻿using System;
+
+namespace hangman
 {
     public class Hangman
     {
@@ -24,12 +26,12 @@
         }
 
 
-        public void type(char c)
+        public void type(char c, Action afterGameOver)
         {
             decreaseTries(c);
             appentToUsed(c);
+            checkGameOver(afterGameOver);
         }
-
         private void decreaseTries(char c)
         {
             if (IsCharUsed(c) || !IsWordContained(c))
@@ -45,6 +47,14 @@
                 _used += c;
             }
         }
+
+        private void checkGameOver(Action afterGameOver)
+        {
+            if (allTriesUsed())
+            {
+                afterGameOver.Invoke();
+            }
+        }
         private bool IsCharUsed(char c)
         {
             return _used.IndexOf(c) != -1;
@@ -53,6 +63,11 @@
         private bool IsWordContained(char c)
         {
             return _word.IndexOf(c) != -1;
+        }
+
+        private bool allTriesUsed()
+        {
+            return _tries == 0;
         }
 
         public int tries()

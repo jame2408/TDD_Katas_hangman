@@ -36,6 +36,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NSubstitute, Version=1.10.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -54,6 +58,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="HangmanForTest.cs" />
+    <Compile Include="HangmanGameOverTests.cs" />
     <Compile Include="HangmanLengthTests.cs" />
     <Compile Include="HangmanUsedTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +69,9 @@
       <Project>{DA8A4046-48D9-4A11-816B-CDDA1BCCA4D7}</Project>
       <Name>hangman</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

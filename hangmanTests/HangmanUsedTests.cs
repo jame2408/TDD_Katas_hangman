@@ -6,7 +6,7 @@ namespace hangman.Tests
     [TestClass]
     public class HangmanUsedTests
     {
-        Hangman hangman = new Hangman("word");
+        HangmanForTest hangman = new HangmanForTest("word");
         private const string ALL_VOWELS = "aeiou";
 
         [TestMethod]
@@ -18,7 +18,7 @@ namespace hangman.Tests
         [TestMethod]
         public void used_when_type_a_vowel()
         {
-            hangman.type(VOWEL);
+            hangman.typeWithoutCheckGameOver(VOWEL);
 
             Assert.AreEqual(ALL_VOWELS, hangman.used());
         }
@@ -26,7 +26,7 @@ namespace hangman.Tests
         [TestMethod]
         public void used_when_type_a_consonant()
         {
-            hangman.type(HangmanForTest.CONSONANT);
+            hangman.typeWithoutCheckGameOver(HangmanForTest.CONSONANT);
 
             Assert.AreEqual(ALL_VOWELS + HangmanForTest.CONSONANT, hangman.used());
         }
@@ -34,8 +34,8 @@ namespace hangman.Tests
         [TestMethod]
         public void used_when_type_the_same_consonant_again()
         {
-            hangman.type(HangmanForTest.CONSONANT);
-            hangman.type(HangmanForTest.CONSONANT);
+            hangman.typeWithoutCheckGameOver(HangmanForTest.CONSONANT);
+            hangman.typeWithoutCheckGameOver(HangmanForTest.CONSONANT);
 
             Assert.AreEqual(ALL_VOWELS + HangmanForTest.CONSONANT, hangman.used());
         }
