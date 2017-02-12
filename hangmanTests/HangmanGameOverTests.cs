@@ -14,7 +14,7 @@ namespace hangman.Tests
         [TestMethod]
         public void Game_not_Over_When_Game_Start()
         {
-            hangman.type(ANY_CHAR, mockAfterGameOver);
+            hangman.typeAndCheckGameOver(ANY_CHAR, mockAfterGameOver);
 
             mockAfterGameOver.DidNotReceive();
         }
@@ -24,7 +24,7 @@ namespace hangman.Tests
         {
             allTriesUsedExceptLast();
 
-            hangman.type(ANY_CHAR, mockAfterGameOver);
+            hangman.typeAndCheckGameOver(ANY_CHAR, mockAfterGameOver);
 
             mockAfterGameOver.Received(1).Invoke();
         }
