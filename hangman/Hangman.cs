@@ -51,12 +51,12 @@
 
         private bool IsCharUsed(char c)
         {
-            return _used.IndexOf(c) != -1;
+            return _used.Contains(c.ToString());
         }
 
         private bool IsWordContained(char c)
         {
-            return _word.IndexOf(c) != -1;
+            return _word.Contains(c.ToString());
         }
 
         public int tries()
