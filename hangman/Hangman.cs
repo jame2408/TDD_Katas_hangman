@@ -10,10 +10,12 @@ namespace hangman
         private string _word;
         private string _used = ALL_VOWELS;
         private int _tries = MAX_TRIES;
+        private readonly Judge _judge;
 
         public Hangman(string word)
         {
             this._word = word;
+            _judge = new Judge(this, _word);
         }
 
         public int length()
@@ -31,8 +33,8 @@ namespace hangman
         {
             decreaseTries(c);
             appentToUsed(c);
-            checkGameOver(afterGameOver);
-            checkGameWin(afterGameWin);
+            _judge.checkGameOver(afterGameOver);
+            _judge.checkGameWin(afterGameWin);
         }
         private void decreaseTries(char c)
         {
@@ -50,22 +52,6 @@ namespace hangman
             }
         }
 
-        private void checkGameOver(Action afterGameOver)
-        {
-            if (allTriesUsed())
-            {
-                afterGameOver.Invoke();
-            }
-        }
-
-        private void checkGameWin(Action afterGameWin)
-        {
-            if (allCharDiscovered())
-            {
-                afterGameWin();
-            }
-        }
-
         private bool IsCharUsed(char c)
         {
             return _used.IndexOf(c) != -1;
@@ -74,16 +60,6 @@ namespace hangman
         private bool IsWordContained(char c)
         {
             return _word.IndexOf(c) != -1;
-        }
-
-        private bool allTriesUsed()
-        {
-            return _tries == 0;
-        }
-
-        private bool allCharDiscovered()
-        {
-            return _word.Equals(discovered());
         }
 
         public int tries()
