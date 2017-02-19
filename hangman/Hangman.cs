@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace hangman
+﻿namespace hangman
 {
     public class Hangman
     {
@@ -29,12 +27,11 @@ namespace hangman
         }
 
 
-        public void type(char c, Action afterGameOver, Action afterGameWin)
+        public Judge type(char c)
         {
             decreaseTries(c);
             appentToUsed(c);
-            _judge.checkGameOver(afterGameOver);
-            _judge.checkGameWin(afterGameWin);
+            return _judge;
         }
         private void decreaseTries(char c)
         {

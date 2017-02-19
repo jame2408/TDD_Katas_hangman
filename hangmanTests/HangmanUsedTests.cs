@@ -18,7 +18,7 @@ namespace hangman.Tests
         [TestMethod]
         public void used_when_type_a_vowel()
         {
-            hangman.typeWithoutCheckGameOver(VOWEL);
+            hangman.type(VOWEL);
 
             Assert.AreEqual(ALL_VOWELS, hangman.used());
         }
@@ -26,7 +26,7 @@ namespace hangman.Tests
         [TestMethod]
         public void used_when_type_a_consonant()
         {
-            hangman.typeWithoutCheckGameOver(HangmanForTest.CONSONANT);
+            hangman.type(HangmanForTest.CONSONANT);
 
             Assert.AreEqual(ALL_VOWELS + HangmanForTest.CONSONANT, hangman.used());
         }
@@ -34,8 +34,8 @@ namespace hangman.Tests
         [TestMethod]
         public void used_when_type_the_same_consonant_again()
         {
-            hangman.typeWithoutCheckGameOver(HangmanForTest.CONSONANT);
-            hangman.typeWithoutCheckGameOver(HangmanForTest.CONSONANT);
+            hangman.type(HangmanForTest.CONSONANT);
+            hangman.type(HangmanForTest.CONSONANT);
 
             Assert.AreEqual(ALL_VOWELS + HangmanForTest.CONSONANT, hangman.used());
         }

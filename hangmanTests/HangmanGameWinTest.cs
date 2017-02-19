@@ -13,7 +13,8 @@ namespace hangman.Tests
         [TestMethod]
         public void Game_not_Win_When_Game_Start()
         {
-            hangman.typeAndCheckGameWin(ANY_CHAR, mockAfterGameWin);
+            hangman.type(ANY_CHAR)
+                .checkGameWin(mockAfterGameWin);
 
             mockAfterGameWin.DidNotReceive();
         }
@@ -21,7 +22,8 @@ namespace hangman.Tests
         [TestMethod]
         public void Game_Win_When_discover_last_contained_consonant()
         {
-            hangman.typeAndCheckGameWin(LAST_CONTAINED_CONSONANT, mockAfterGameWin);
+            hangman.type(LAST_CONTAINED_CONSONANT)
+                .checkGameWin(mockAfterGameWin);
 
             mockAfterGameWin.Received(1).Invoke();
         }

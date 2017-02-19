@@ -38,7 +38,7 @@ namespace hangman.Tests
         {
             HangmanForTest hangman = new HangmanForTest("word");
 
-            hangman.typeWithoutCheckGameOver(CONTAINED_CONSONANT);
+            hangman.type(CONTAINED_CONSONANT);
 
             Assert.AreEqual("wo__", hangman.discovered());
         }

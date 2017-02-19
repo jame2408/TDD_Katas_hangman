@@ -18,7 +18,7 @@ namespace hangman.Tests
         [TestMethod]
         public void tries_when_type_a_vowel()
         {
-            hangman.typeWithoutCheckGameOver(VOWEL);
+            hangman.type(VOWEL);
 
             Assert.AreEqual(MAX_TRIES - 1, hangman.tries());
         }
@@ -26,7 +26,7 @@ namespace hangman.Tests
         [TestMethod]
         public void tries_when_type_a_contained_consonant()
         {
-            hangman.typeWithoutCheckGameOver(CONTAINED_CONSONANT);
+            hangman.type(CONTAINED_CONSONANT);
 
             Assert.AreEqual(MAX_TRIES, hangman.tries());
         }
@@ -34,8 +34,8 @@ namespace hangman.Tests
         [TestMethod]
         public void tries_when_type_the_same_contained_consonant_again()
         {
-            hangman.typeWithoutCheckGameOver(CONTAINED_CONSONANT);
-            hangman.typeWithoutCheckGameOver(CONTAINED_CONSONANT);
+            hangman.type(CONTAINED_CONSONANT);
+            hangman.type(CONTAINED_CONSONANT);
 
             Assert.AreEqual(MAX_TRIES - 1, hangman.tries());
         }
@@ -43,7 +43,7 @@ namespace hangman.Tests
         [TestMethod]
         public void tries_when_type_not_contained_consonant()
         {
-            hangman.typeWithoutCheckGameOver(NOT_CONTAINED_CONSONANT);
+            hangman.type(NOT_CONTAINED_CONSONANT);
 
             Assert.AreEqual(MAX_TRIES - 1, hangman.tries());
         }
